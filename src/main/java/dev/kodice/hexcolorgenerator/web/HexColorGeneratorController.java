@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.kodice.hexcolorgenerator.models.dto.RandomColorsResponse;
 import dev.kodice.hexcolorgenerator.services.RandomColorsPack;
 import models.dto.RandomColorsResponse;
 

@@ -23,10 +23,7 @@ public class HexColorGeneratorController {
 	@GetMapping
 	public RandomColorsResponse defaultHexColor(@RequestParam(defaultValue = "1") int nColors,
 			@RequestParam(required = false) Optional<Integer> seed) {
-		int finalSeed = seed.orElseGet(() -> {
-			Random random = new Random();
-			return random.nextInt(1001);
-		});
+		int finalSeed = seed.orElseGet(() -> new Random().nextInt(1001));
 		List<String> colors = this.randomColorsPack.colorsArray(nColors, finalSeed);
 		RandomColorsResponse response = new RandomColorsResponse(colors, finalSeed);
 		return response;

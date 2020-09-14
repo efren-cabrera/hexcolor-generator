@@ -11,8 +11,12 @@ public class RandomColorsResponse {
 
 	private int nColors;
 	
-	public RandomColorsResponse(List<String> colors) {
+	private int seed;
+	
+
+	public RandomColorsResponse(List<String> colors, int seed) {
 		this.colors = colors;
+		this.seed = seed;
 		this.nColors = colors.size();
 		this.time = LocalDateTime.now();
 	}
@@ -39,6 +43,14 @@ public class RandomColorsResponse {
 
 	public void setnColors(int nColors) {
 		this.nColors = nColors;
+	}
+	
+	public int getSeed() {
+		return seed;
+	}
+
+	public void setSeed(int seed) {
+		this.seed = seed;
 	}
 
 }

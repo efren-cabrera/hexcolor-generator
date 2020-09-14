@@ -22,7 +22,7 @@ public class HexColorGeneratorController {
 	public RandomColorsResponse defaultHexColor(@RequestParam(defaultValue = "1") int nColors,
 			@RequestParam(defaultValue = "28") int seed) {
 		List<String> colors = this.randomColorsPack.colorsArray(nColors, seed);
-		RandomColorsResponse response = new RandomColorsResponse(colors);
+		RandomColorsResponse response = new RandomColorsResponse(colors, seed);
 		return response;
 	}
 

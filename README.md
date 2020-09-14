@@ -21,6 +21,7 @@ Response:
         "#ace820"
     ],
     "time": "2020-09-14T09:28:11.495",
-    "nColors": 3
+    "nColors": 3,
+    "seed": 28
 }
 ```

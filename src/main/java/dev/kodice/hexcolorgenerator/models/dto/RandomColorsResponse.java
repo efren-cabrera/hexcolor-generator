@@ -9,8 +9,11 @@ public class RandomColorsResponse {
 
 	private LocalDateTime time;
 
-	public RandomColorsResponse(List<String> colors) {
+	private int seed;
+
+	public RandomColorsResponse(List<String> colors, int seed) {
 		this.colors = colors;
+		this.seed = seed;
 		this.time = LocalDateTime.now();
 	}
 
@@ -28,6 +31,14 @@ public class RandomColorsResponse {
 
 	public void setTime(LocalDateTime time) {
 		this.time = time;
+	}
+
+	public int getSeed() {
+		return seed;
+	}
+
+	public void setSeed(int seed) {
+		this.seed = seed;
 	}
 
 }

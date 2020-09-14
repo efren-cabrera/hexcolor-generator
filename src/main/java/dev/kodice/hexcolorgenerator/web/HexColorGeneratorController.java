@@ -1,6 +1,8 @@
 package dev.kodice.hexcolorgenerator.web;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.kodice.hexcolorgenerator.models.dto.RandomColorsResponse;
 import dev.kodice.hexcolorgenerator.services.RandomColorsPack;
-import models.dto.RandomColorsResponse;
 
 @RestController
 @RequestMapping(path = "/random")
@@ -21,9 +22,13 @@ public class HexColorGeneratorController {
 
 	@GetMapping
 	public RandomColorsResponse defaultHexColor(@RequestParam(defaultValue = "1") int nColors,
-			@RequestParam(defaultValue = "28") int seed) {
-		List<String> colors = this.randomColorsPack.colorsArray(nColors, seed);
-		RandomColorsResponse response = new RandomColorsResponse(colors, seed);
+			@RequestParam(required = false) Optional<Integer> seed) {
+		int finalSeed = seed.orElseGet(() -> {
+			Random random = new Random();
+			return random.nextInt(1001);
+		});
+		List<String> colors = this.randomColorsPack.colorsArray(nColors, finalSeed);
+		RandomColorsResponse response = new RandomColorsResponse(colors, finalSeed);
 		return response;
 	}
 
